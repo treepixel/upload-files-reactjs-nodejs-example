@@ -89,6 +89,18 @@ class App extends Component {
       });
   };
 
+  handleDelete = async id => {
+    await api.delete(`posts/${id}`);
+
+    this.setState({
+      uploadedFiles: this.state.uploadedFiles.filter(file => file.id !== id)
+    });
+  };
+
+  componentWillUnmount() {
+    this.state.uploadedFiles.forEach(file => URL.revokeObjectURL(file.preview));
+  }
+
   render() {
     const { uploadedFiles } = this.state;
     return (
@@ -96,7 +108,7 @@ class App extends Component {
         <Content>
           <Upload onUpload={this.handleUpload} />
           {!!uploadedFiles.length && (
-            <FileList files={uploadedFiles} onDelete={() => {}} />
+            <FileList files={uploadedFiles} onDelete={this.handleDelete} />
           )}
         </Content>
         <GlobalStyle />;
