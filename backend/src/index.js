@@ -9,7 +9,7 @@ const path = require("path");
 const app = express();
 
 //Database setup
-mongoose.connect("mongodb://localhost:27017/upload_db", {
+mongoose.connect(process.env.URL_MONGO, {
   useNewUrlParser: true
 });
 
