@@ -30,8 +30,9 @@ const FileList = ({ files, onDelete }) => (
                 root: { width: 24 },
                 path: { stroke: "#7159c1" }
               }}
-              strokeWidth={10}
-              percentage={uploadedFile.progress}
+              value={uploadedFile.progress}
+              text={`${uploadedFile.progress}%`}
+              strokeWidth={8}
             />
           )}
 
