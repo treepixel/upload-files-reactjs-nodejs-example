@@ -9,7 +9,7 @@ const path = require("path");
 const app = express();
 
 //Database setup
-mongoose.connect(process.env.URL_MONGO, {
+mongoose.connect(process.env.MONGO_URL, {
   useNewUrlParser: true
 });
 
